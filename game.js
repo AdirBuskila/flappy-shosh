@@ -46,6 +46,7 @@
     message: "assets/sprites/message.png",
     gameover: "assets/sprites/gameover.png",
     nataf: "assets/nataf.png",
+    natafBW: "assets/nataf-black-and-white.png",
     n0: "assets/sprites/0.png",
     n1: "assets/sprites/1.png",
     n2: "assets/sprites/2.png",
@@ -404,22 +405,17 @@
     ctx.strokeText("Get Ready!", W / 2, 132);
     ctx.fillText("Get Ready!", W / 2, 132);
 
-    // tap-to-start hint with a bobbing arrow above the head
-    const ay = 300 + Math.sin(frame / 9) * 5;
+    // tap-to-start hint with the black & white Shosh head bobbing above
+    const bw = images.natafBW;
+    const bwW = 38;
+    const bwH = bwW * (bw.naturalHeight / bw.naturalWidth);
+    const by = 300 + Math.sin(frame / 18) * 4;
     ctx.font = "700 14px 'Segoe UI', system-ui, sans-serif";
     ctx.lineWidth = 4;
     ctx.fillStyle = "#fff";
     ctx.strokeText("tap to Shosh", W / 2, 360);
     ctx.fillText("tap to Shosh", W / 2, 360);
-    ctx.fillStyle = "rgba(255,255,255,0.9)";
-    ctx.strokeStyle = "rgba(0,0,0,0.4)";
-    ctx.beginPath();
-    ctx.moveTo(W / 2, ay - 14);
-    ctx.lineTo(W / 2 - 9, ay);
-    ctx.lineTo(W / 2 + 9, ay);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
+    ctx.drawImage(bw, W / 2 - bwW / 2, by - bwH / 2, bwW, bwH);
     ctx.restore();
   }
 
